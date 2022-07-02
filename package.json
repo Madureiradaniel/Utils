@@ -1,0 +1,29 @@
+{
+  "name": "autentication",
+  "version": "1.0.0",
+  "description": "Pacote para controle de autenticacao",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Madureiradaniel/authentication.git"
+  },
+  "author": "Madureira, Daniel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Madureiradaniel/authentication/issues"
+  },
+  "homepage": "https://github.com/Madureiradaniel/authentication#readme",
+  "dependencies": {
+    "atob": "^2.1.2",
+    "bcrypt": "^5.0.1",
+    "btoa": "^1.2.1",
+    "crypto": "^1.0.1",
+    "crypto-random-string": "3.3.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.4.1",
+    "mongoose-paginate-v2": "^1.6.3"
+  }
+}
