@@ -1,6 +1,6 @@
 {
   "name": "utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Pacote para controle de autenticacao",
   "main": "index.js",
   "scripts": {
