@@ -15,6 +15,7 @@ module.exports = {
     Jwt,
     User,
     Aes,
+    Logs,
     Middleware : {
         checkAuthorizedRoute
     }
