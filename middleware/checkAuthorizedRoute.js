@@ -20,7 +20,7 @@ const authRoute = async (req, res, next) => {
         if(user.unauthorizedRoutes.length > 0){
             for(let route of user.unauthorizedRoutes){
                 if(req.path.includes(route.path)){
-                    throw new Error("Rota não autorizada!")
+                    return res.status(401).send({ error : true, message : 'unauthorized!'})
                 }
             }
         }
