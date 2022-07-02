@@ -1,5 +1,5 @@
 {
-  "name": "autentication",
+  "name": "utils",
   "version": "1.0.0",
   "description": "Pacote para controle de autenticacao",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/Madureiradaniel/authentication.git"
+    "url": "git+ssh://git@github.com:Madureiradaniel/Utils.git"
   },
   "author": "Madureira, Daniel",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Madureiradaniel/authentication/issues"
+    "url": "https://github.com/Madureiradaniel/Utils/issues"
   },
-  "homepage": "https://github.com/Madureiradaniel/authentication#readme",
+  "homepage": "https://github.com/Madureiradaniel/Utils/issues#readme",
   "dependencies": {
     "atob": "^2.1.2",
     "bcrypt": "^5.0.1",
