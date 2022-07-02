@@ -9,10 +9,10 @@ const authRoute = async (req, res, next) => {
         const token = req.header('Authorization').replace('Bearer ', '')
 
         // faz o decode do token
-        const decoded = await Jwt.verify(token)
+        const result = await Jwt.verify(token)
 
         // busca usuario
-        const user = await UserApiDb.findById(decoded._id).populate('unauthorizedRoutes')
+        const user = await UserApiDb.findById(result.decoded._id).populate('unauthorizedRoutes')
 
         if(!user) throw new Error("Usuário não encontrado!")
 
