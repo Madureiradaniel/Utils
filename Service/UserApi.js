@@ -34,14 +34,25 @@ exports.update = async (data) => {
     }
 }
 
-exports.findByNameOrId = async (nameId) => {
+exports.findByName = async (name) => {
     try {
 
         const user = await UserDb.findOne({
-            $or: [
-                { _id: nameId }, { name: nameId }
-            ]
+            name
         })
+
+        return { error: false, user }
+    } catch (e) {
+        console.log(e)
+        return { error: true }
+    }
+}
+
+
+exports.findById = async (id) => {
+    try {
+
+        const user = await UserDb.findById(id)
 
         return { error: false, user }
     } catch (e) {
@@ -60,7 +71,7 @@ exports.addUnauthorizedRoutes = async (idUser, route) => {
 
         routes = new Set(routes)
 
-        user.unauthorizedRoutes = [ ...routes ]
+        user.unauthorizedRoutes = [...routes]
 
         await user.save()
 
@@ -95,7 +106,7 @@ exports.addAuthorizedIps = async (idUser, ip) => {
 
         authorizedIps = new Set(authorizedIps)
 
-        user.authorizedIps = [ ...authorizedIps ]
+        user.authorizedIps = [...authorizedIps]
 
         await user.save()
 

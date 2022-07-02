@@ -1,7 +1,7 @@
 {
   "name": "utils",
-  "version": "1.0.1",
-  "description": "Pacote para controle de autenticacao",
+  "version": "1.0.2",
+  "description": "Pacote com funções utilitários.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
