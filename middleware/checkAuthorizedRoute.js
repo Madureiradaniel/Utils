@@ -19,7 +19,7 @@ const authRoute = async (req, res, next) => {
         // se houver rotas bloqueadas verifica se é a que o usuário está solicitando
         if(user.unauthorizedRoutes.length > 0){
             for(let route of user.unauthorizedRoutes){
-                if(req.path.includes(route.path)){
+                if(req.path === route.path){
                     return res.status(401).send({ error : true, message : 'unauthorized!'})
                 }
             }
