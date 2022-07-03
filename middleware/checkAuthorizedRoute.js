@@ -5,7 +5,7 @@ const UserApiDb = require("../model/UsersApi")
 
 const authRoute = async (req, res, next) => {
     try {
-        
+
         const token = req.header('Authorization').replace('Bearer ', '')
 
         // faz o decode do token
@@ -14,20 +14,24 @@ const authRoute = async (req, res, next) => {
         // busca usuario
         const user = await UserApiDb.findById(result.decoded._id).populate('unauthorizedRoutes')
 
-        if(!user) throw new Error("Usuário não encontrado!")
+        if (!user) throw new Error("Usuário não encontrado!")
 
         // se houver rotas bloqueadas verifica se é a que o usuário está solicitando
-        if(user.unauthorizedRoutes.length > 0){
-            for(let route of user.unauthorizedRoutes){
-                if(route.path.includes(req.path) && req.method.toLowerCase() == route.method.toLowerCase()){
-                    return res.status(401).send({ error : true, message : 'unauthorized!'})
+        if (user.unauthorizedRoutes.length > 0) {
+            for (let route of user.unauthorizedRoutes) {
+
+                if ( 
+                    (route.path === req.path || route.path + '/' === req.path || route.path === req.path + '/' || route.path + '/' === req.path + '/') 
+                    &&
+                    req.method.toLowerCase() == route.method.toLowerCase()) {
+                    return res.status(401).send({ error: true, message: 'unauthorized!' })
                 }
             }
         }
 
-        if(user.isCheckIp){
+        if (user.isCheckIp) {
             var ip = req.headers['x-forwarded-for']
-            if(!user.authorizedIps.includes(ip)){
+            if (!user.authorizedIps.includes(ip)) {
                 throw new Error("IP não autorizado!")
             }
         }
