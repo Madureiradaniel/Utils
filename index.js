@@ -7,6 +7,7 @@ const Logs = require("./Service/LogsRequest")
 const Routes = require("./Service/Routes")
 const { Aes } = require("./Service/Aes")
 const checkAuthorizedRoute = require("./middleware/checkAuthorizedRoute")
+const checkIsSuperAdmin = require("./middleware/checkIsSuperAdmin")
 
 
 module.exports = {
@@ -19,6 +20,7 @@ module.exports = {
     Logs,
     Routes,
     Middleware : {
-        checkAuthorizedRoute
+        checkAuthorizedRoute,
+        checkIsSuperAdmin
     }
 }
