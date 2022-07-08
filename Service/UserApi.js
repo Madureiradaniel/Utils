@@ -61,6 +61,16 @@ exports.findById = async (id) => {
     }
 }
 
+
+exports.findByClientAndSecret = async (client_id, secret_id) => {
+    try {
+        const user = await UserDb.findOne({ client_id, secret_id })
+        return { error: false, user }
+    } catch (e) {
+        console.log(e)
+        return { error: true }
+    }
+}
 //
 
 exports.addUnauthorizedRoutes = async (idUser, route) => {
