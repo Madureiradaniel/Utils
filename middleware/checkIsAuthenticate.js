@@ -8,6 +8,8 @@ const Auth = async (req, res, next, header) => {
         // faz o decode do token
         const result = await Jwt.verify(token)
 
+        if(result.error) return res.status(401).send({ error: true, message: "Please Authenticate!" })
+
         res.decoded = result.decoded
 
         next()
