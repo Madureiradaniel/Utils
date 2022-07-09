@@ -8,6 +8,7 @@ const Routes = require("./Service/Routes")
 const { Aes } = require("./Service/Aes")
 const checkAuthorizedRoute = require("./middleware/checkAuthorizedRoute")
 const checkIsSuperAdmin = require("./middleware/checkIsSuperAdmin")
+const checkIsAuthenticate = require("./middleware/checkIsAuthenticate")
 
 
 module.exports = {
@@ -21,6 +22,7 @@ module.exports = {
     Routes,
     Middleware : {
         checkAuthorizedRoute,
-        checkIsSuperAdmin
+        checkIsSuperAdmin,
+        checkIsAuthenticate
     }
 }
