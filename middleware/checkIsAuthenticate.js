@@ -1,18 +1,18 @@
 const Jwt = require("../Service/Jwt")
 
-const Auth = (req, res, next, header) => {
-    try{
-    // verifica se o token é válido
-    const token = req.header(header).replace('Bearer ', '')
+const Auth = async (req, res, next, header) => {
+    try {
+        // verifica se o token é válido
+        const token = req.header(header).replace('Bearer ', '')
 
-    // faz o decode do token
-    const result = await Jwt.verify(token)
+        // faz o decode do token
+        const result = await Jwt.verify(token)
 
-    res.decoded = result.decoded
+        res.decoded = result.decoded
 
-    next()
+        next()
 
-    }catch(e){
+    } catch (e) {
         console.log(e)
         res.status(401).send({ error: true, message: "Please Authenticate!" })
     }
