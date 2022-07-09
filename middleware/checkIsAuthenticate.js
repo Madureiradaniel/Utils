@@ -10,7 +10,7 @@ const Auth = async (req, res, next, header) => {
 
         if(result.error) return res.status(401).send({ error: true, message: "Please Authenticate!" })
 
-        res.decoded = result.decoded
+        req.decoded = result.decoded
 
         next()
 
