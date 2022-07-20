@@ -1,12 +1,9 @@
 const crypto = require('crypto');
-const btoa = require('btoa');
 const atob = require('atob');
 
 exports.Aes = class {
     static hexToBase64(str) {
-        return btoa(String.fromCharCode.apply(null,
-            str.replace(/\r|\n/g, "").replace(/([\da-fA-F]{2}) ?/g, "0x$1 ").replace(/ +$/, "").split(" "))
-        );
+        return Buffer.from(str.replace(/\r|\n/g, "").replace(/([\da-fA-F]{2}) ?/g, "0x$1 ").replace(/ +$/, "").split(" "), 'hex').toString('base64')
     }
 
     static base64ToHex(str) {
@@ -46,17 +43,17 @@ exports.Aes = class {
         }
     }
 
-    static getDecrypted(encripted, KEY) {
+    static getDecrypted(encrypted, KEY) {
         try {
             var iv = Buffer.from(new ArrayBuffer(16));
             let text = { key: KEY, iv: iv }
 
-            let dataHex = this.base64ToHex(encripted);
+            let dataHex = this.base64ToHex(encrypted);
             dataHex = dataHex.split(' ');
             dataHex = dataHex.join('');
             text.encryptedData = dataHex;
-            let decriptado = this.#decrypt(text);
-            return JSON.parse(decriptado);
+            let decrypted = this.#decrypt(text);
+            return JSON.parse(decrypted);
         } catch (e) {
             console.log(e)
             return { error: true }
