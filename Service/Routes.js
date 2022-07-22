@@ -32,22 +32,33 @@ exports.updateRoute = async (route) => {
 }
 
 exports.list = async () => {
-    try{
+    try {
         const routes = await RoutesDb.find({})
-        return { error : false, routes }
-    }catch(e){
+        return { error: false, routes }
+    } catch (e) {
         console.log(e)
-        return { error : true }
+        return { error: true }
+    }
+}
+
+exports.findByPathAndMethod = async (path, method) => {
+    try {
+        const route = await RoutesDb.findOne({ path, method })
+        return { error: true, route }
+
+    } catch (e) {
+        console.log(e)
+        return { error: true, e }
     }
 }
 
 
 exports.updateRole = async (idRoute, idRole) => {
-    try{
-        await RoutesDb.updateOne({ _id : idRoute }, { role : idRole})
-        return { error : false, message : 'updated!'}
-    }catch(e){
+    try {
+        await RoutesDb.updateOne({ _id: idRoute }, { role: idRole })
+        return { error: false, message: 'updated!' }
+    } catch (e) {
         console.log(e)
-        return { error : true, e}
+        return { error: true, e }
     }
 }
