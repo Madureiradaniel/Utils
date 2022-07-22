@@ -7,9 +7,7 @@ const ruleSchema = new mongoose.Schema({
         required: true
     },
 
-    roles: [String]
-
 }, { timestamps: true })
 
-const Rules = mongoose.model('Rules', ruleSchema)
-module.exports = Rules
+const Roles = mongoose.model('Roles', ruleSchema)
+module.exports = Roles

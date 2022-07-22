@@ -11,7 +11,7 @@ const routeSchema = new mongoose.Schema({
 
     method: String,
 
-    roles: [String] // nome deve ser igual ao que foi criado em rules
+    role: { type : String, ref: 'Roles' } // nome deve ser igual ao que foi criado em rules
 
 }, { timestamps: true })
 

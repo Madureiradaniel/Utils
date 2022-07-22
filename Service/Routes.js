@@ -40,3 +40,14 @@ exports.list = async () => {
         return { error : true }
     }
 }
+
+
+exports.updateRole = async (idRoute, idRole) => {
+    try{
+        await RoutesDb.updateOne({ _id : idRoute }, { role : idRole})
+        return { error : false, message : 'updated!'}
+    }catch(e){
+        console.log(e)
+        return { error : true, e}
+    }
+}

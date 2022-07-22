@@ -1,5 +1,5 @@
 const Authentication = require("./Service/Authentication")
-const Rule = require("./Service/Rules")
+const Role = require("./Service/Roles")
 const db = require("./db/mongoose")
 const Jwt = require("./Service/Jwt")
 const User = require("./Service/UserApi")
@@ -13,7 +13,7 @@ const checkIsAuthenticate = require("./middleware/checkIsAuthenticate")
 
 module.exports = {
     Authentication,
-    Rule,
+    Role,
     db,
     Jwt,
     User,
