@@ -15,7 +15,12 @@ const userSchema = new mongoose.Schema({
 
     authorizedIps: [String],
 
-    unauthorizedRoutes: [{ type: String, ref: 'Routes' }]
+    unauthorizedRoutes: [{ type: String, ref: 'Routes' }],
+
+    atributos_personalizados: [{
+        name: String,
+        value: String
+    }]
 
 }, { timestamps: true })
 
