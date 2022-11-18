@@ -20,8 +20,8 @@ const authRoute = async (req, res, next) => {
         if (user.unauthorizedRoutes.length > 0) {
             for (let route of user.unauthorizedRoutes) {
 
-                if ( 
-                    (route.path === req.path || route.path + '/' === req.path || route.path === req.path + '/' || route.path + '/' === req.path + '/') 
+                if (
+                    (route.path === req.path || route.path + '/' === req.path || route.path === req.path + '/' || route.path + '/' === req.path + '/')
                     &&
                     req.method.toLowerCase() == route.method.toLowerCase()) {
                     return res.status(401).send({ error: true, message: 'unauthorized!' })
@@ -35,6 +35,11 @@ const authRoute = async (req, res, next) => {
                 throw new Error("IP não autorizado!")
             }
         }
+
+        //recebendo atributos personalizados
+        req.atributos = {}
+        
+        user.atributos_personalizados.forEach(row => req.atributos[row.name] = row.value)
 
         req.user = user
 
