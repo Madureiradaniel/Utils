@@ -30,7 +30,7 @@ const authRoute = async (req, res, next, isCheckIp=false) => {
         }
 
         if (isCheckIp) {
-            var ip = req.headers['x-forwarded-for']
+            var ip = req.headers['x-forwarded-for'] || "127.0.0.1"
             if (!user.authorizedIps.includes(ip)) {
                 throw new Error("IP não autorizado!")
             }
