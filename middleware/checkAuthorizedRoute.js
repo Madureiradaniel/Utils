@@ -3,7 +3,7 @@
 const Jwt = require("../Service/Jwt")
 const UserApiDb = require("../model/UsersApi")
 
-const authRoute = async (req, res, next) => {
+const authRoute = async (req, res, next, isCheckIp=false) => {
     try {
 
         const token = req.header('Authorization').replace('Bearer ', '')
@@ -29,7 +29,7 @@ const authRoute = async (req, res, next) => {
             }
         }
 
-        if (user.isCheckIp) {
+        if (isCheckIp) {
             var ip = req.headers['x-forwarded-for']
             if (!user.authorizedIps.includes(ip)) {
                 throw new Error("IP não autorizado!")

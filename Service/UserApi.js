@@ -26,7 +26,7 @@ exports.create = async (name) => {
 
 exports.update = async (data) => {
     try {
-        await UserDb.updateMany({ _id: data._id }.data)
+        await UserDb.updateMany({ _id: data._id }, data)
         return { error: false }
     } catch (e) {
         console.log(e)
