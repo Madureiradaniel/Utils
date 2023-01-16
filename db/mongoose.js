@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
-mongoose.set('strictQuery', true)
 
-exports.initDb = (connectionURL, database="authentication") => {
+exports.initDb = (connectionURL, database = "authentication") => {
+    mongoose.set('strictQuery', true)
     mongoose.connect(connectionURL, {
         useNewUrlParser: true,
         useUnifiedTopology: true,

@@ -23,6 +23,14 @@ exports.create = async (name) => {
     }
 }
 
+exports.list = async () => {
+    try {
+        return await UserDb.find({}, "_id name")
+    } catch (e) {
+        console.log(e)
+        return { error: true, e: e.toString() }
+    }
+}
 
 exports.update = async (data) => {
     try {
